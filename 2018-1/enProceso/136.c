@@ -1,23 +1,35 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 int main (){
-	int n, i, k, pos, feo;
-	for(n=1,pos=1; pos<=11; n++){
-		k=0;
-		for(i=1;i<n;i++){
-			if(i==2 || i==3 || i==5 || i==1){
-				continue;
-			}
-			else if(n%i==0){
-				k++;
+	long long int n=2, div1, div2;
+	int pos=0, esFactorPrimo, k;
+	printf("1 ");
+	while(pos<20){
+		k=1;
+		printf("%lld ", n);
+		for(div1=2;div1<=n;div1++){
+			if(n%div1==0){
+				esFactorPrimo=1;
+				for(div2=2;div2<=n/2+1;div2++){
+					if(div1%div2==0){
+						esFactorPrimo=0;
+					}
+				}
+				if(esFactorPrimo==1){
+					printf("%lld ", div1);
+					if(div1!=2 && div1!=3 && div1!=5)
+						k=0;
+					}
 			}
 		}
-		if(!k){
-			feo=n;
+		if(k){
 			pos++;
+			printf("SE\n");
 		}
+		else
+			printf("NO\n");
+		n++;
 	}
-	printf("\nThe 1500'th ugly number is %d.\n", feo);
 	return 0;
 }
