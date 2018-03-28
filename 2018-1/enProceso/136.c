@@ -1,30 +1,35 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 int main (){
-	int esFactor, esFeo, pos;
-	long long int n, div1, div2;
-	pos=0;
-	n=1;
-	while(pos<1500){
-		esFeo=1;
+	long long int n=2, div1, div2;
+	int pos=0, esFactorPrimo, k;
+	printf("1 ");
+	while(pos<20){
+		k=1;
+		printf("%lld ", n);
 		for(div1=2;div1<=n;div1++){
 			if(n%div1==0){
-				esFactor=1;
-				for(div2=2;div2<div1;div2++){
-					if(div1%div2==0)
-						esFactor=0;
+				esFactorPrimo=1;
+				for(div2=2;div2<=n/2+1;div2++){
+					if(div1%div2==0){
+						esFactorPrimo=0;
+					}
 				}
-				if(esFactor){
+				if(esFactorPrimo==1){
+					printf("%lld ", div1);
 					if(div1!=2 && div1!=3 && div1!=5)
-						esFeo=0;
-				}
+						k=0;
+					}
 			}
 		}
-		if(esFeo)
+		if(k){
 			pos++;
+			printf("SE\n");
+		}
+		else
+			printf("NO\n");
 		n++;
 	}
-	printf("%lld\n", n-1);
 	return 0;
 }
