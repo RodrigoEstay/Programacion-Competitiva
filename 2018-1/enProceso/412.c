@@ -12,10 +12,10 @@ int main (){
 	while(scanf("%d", &N)!=EOF && N){
 		pairs=0;
 		ncf=0;
-		for(i=0;i<N;i++)
+		for(i=0;i<N;++i)
 			scanf("%d", &data[i]);
 		for(i=0;i<N-1;++i){
-			for(j=i+1;j<N;j++){
+			for(j=i+1;j<N;++j){
 				if(commonFactor(data[i], data[j]))
 					++ncf;
 				++pairs;
