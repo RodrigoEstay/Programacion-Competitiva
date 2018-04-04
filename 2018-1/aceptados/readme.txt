@@ -1,1 +1,1 @@
-La forma por la cual se obtuvo el resultado en el problema 136 esta en la carpeta enProceso con el mismo nombre.
+La forma por la cual se obtuvo el resultado en el problema 136 esta en la carpeta 'extra' con el mismo nombre.
