@@ -2,42 +2,48 @@
 #include <stdio.h>
 #include <math.h>
 
-int main (){
-	int num, c[500], i, j, sum, p;
-	char in, in1;
-	while(1){
-		for(i=0, num=0;in=fgetc(stdin)!='\n';){
-			if(in==EOF)
-				return 0;
-			if(in>='0' && in<='9')
-				num=num*10+(in-'0');
-			else{
-				c[i]=num;
-				num=0;
-				++i;
-			}
-		}
-		for(i=0;c[i]!='\0';++i)
-			printf("%d ", c[i]);
-		printf("\n");
-		/*
-		num=0;
-		while(in1=fgetc(stdin)!='\n'){
-			if(in1>='0' && in1<='9')
-				num=num*10+(in1-'0');
-			else{
-				sum=0;
-				for(j=0;j<i;++j){
-					if(j==0)
-						sum+=c[j];
-					p=(int) pow(num,j);
-					sum+=(c[j]*p);
-				}
-				num=0;
-				printf("%d", sum);
-			}
-		}
-	printf("\n"); */
-	}
+struct line{
+	int num[1000];
+	int len;
+};
+
+struct line lineScan(void);
+
+int main(){
+	struct line first=lineScan(), second=lineScan();
+	int *c=first.num, lenc=first.len, *x=second.num, lenx=second.len, i, j;
+	printf("c= ");
+	for(i=0;i<lenc;++i)
+		printf("%d ", *(c+i));
+	printf("\nx= ");
+	for(i=0;i<lenx;++i)
+		printf("%d ", *(x+i));
+	printf("\n");
 	return 0;
+}
+
+struct line lineScan(){
+	char input[10000];
+	int i, j, num, c[1000], neg=0;
+	scanf("%[^\n]", input);
+	printf("%s\n", input);
+	for(i=0;;++i){
+		printf("hola\n");
+		if(input[i]=='-')
+			neg=1;
+		else if(input[i]>='0' && input[i]<='9')
+			num=10*num+input[i]-'0';
+		else{
+			if(neg){
+				num=-num;
+				neg=0;
+			}
+			c[j]=num;
+			++j;
+			if(input[i]=='\0')
+				break;
+		}
+	}
+	struct line r={*c,j};
+	return r;
 }
