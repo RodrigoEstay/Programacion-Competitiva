@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+/* Programa hecho totalmente por mi. */
+
 int main(){
 	char c[7000000];
 	int num=0, i, neg=0, start=-1, doubleScan, constants[2000], x[2000], cCont, xCont, end=0, j, k;

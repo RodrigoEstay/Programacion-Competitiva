@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/* Codigo hecho completamente por mi mismo. */
+
 int main (){
 	int i, j, cycle, maxCycle, temp, j1, i1;
 	unsigned long long int n;

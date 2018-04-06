@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Programa hecho totalmente por mi. */
+
 int main (){
 	int cases, ampl, freq, i, j, k, wave;
 
