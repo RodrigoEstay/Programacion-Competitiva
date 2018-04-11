@@ -26,11 +26,11 @@ int main (){
 		}
 
 		/* Para asegurarnos de imprimir todos los factores, ocupamos un metodo en el cual
-		avanzamos por un numero hasta que sea divisor de num, si lo es lo imprimimos y
+		avanzamos por un numero hasta que sea divisor de "num", si lo es lo imprimimos y
 		el nuevo num sera el resultado de la division, esto continua hasta que no se encuentre
-		divisores para num, entonces el ultimo factor es el mismo num. 
+		divisores para "num", entonces el ultimo factor es el ultimo "num" obtenido. 
 
-		el divisor avanza hasta la raiz cuadrada de num ya que es el ultimo factor que
+		El divisor avanza hasta la raiz cuadrada de "num" ya que es el ultimo factor que
 		se puede encontrar. */
 
 		for(div=2;div<=sqrt(num);++div){

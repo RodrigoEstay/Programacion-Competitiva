@@ -5,7 +5,7 @@
 "extras" con el mismo nombre que este, no se ocupo ese programa por que se demoraba
 mas de 3 segundos.
 
-En el programa anteriormente mencionado me ayudaron para hacerlo mas eficiente. */
+En el programa anteriormente mencionado busque en internet como hacerlo mas eficiente. */
 
 int main (){
 	printf("The 1500'th ugly number is %d.\n",859963392);
