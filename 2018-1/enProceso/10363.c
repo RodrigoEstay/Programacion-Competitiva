@@ -3,13 +3,12 @@
 
 int main (){
 	int N, cases, i, j, contX, contO, winX, winO;
-	char tictac[3][3], killWhiteSpace;
+	char tictac[3][4];
 	scanf("%d", &N);
 	for(cases=0;cases<N;++cases, winO=0, winX=0, contX=0, contO=0){
-		scanf("%c", &killWhiteSpace);
+		scanf("%s%s%s", tictac[0], tictac[1], tictac[2]);
 		for(i=0;i<3;++i){
-			for(j=0;j<4;++j){
-				scanf("%c", &tictac[i][j]);
+			for(j=0;j<3;++j){
 				if(tictac[i][j]=='X')
 					++contX;
 				else if(tictac[i][j]=='O')
