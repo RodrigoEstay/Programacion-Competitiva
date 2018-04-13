@@ -7,9 +7,6 @@ int main (){
 	scanf("%d", &N);
 	for(cases=0;cases<N;++cases, winO=0, winX=0, contX=0, contO=0){
 		scanf("%c", &killWhiteSpace);
-		/* if(cases>0)
-			scanf("%c", &killWhiteSpace);
-			*/
 		for(i=0;i<3;++i){
 			for(j=0;j<4;++j){
 				scanf("%c", &tictac[i][j]);
