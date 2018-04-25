@@ -1,47 +1,33 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-void killWhiteSpace();
-
-int main(){
-	int cases, i, perm[1000], j, k;
-	char values[1000][400], scan;
-	scanf("%d", &cases);
-	killWhiteSpace();
-	while(cases--){
+int main (){
+	int N, i, j, perm[100];
+	char killWhiteSpace, values[100][100],pValues[100][100], c;
+	scanf("%d%c%c", &N, &killWhiteSpace, &killWhiteSpace);
+	while(N--){
 		i=0;
 		perm[i]=0;
-		k=0;
-		do{
-			scanf("%c", &scan);
-			if(scan==' ')
-				++k;
-		}while(scan!='\n');
-		for(i=0;i<k+1;++i){
-			/*if(scan>='0' && scan<='9')
-				perm[i]=perm[i]*10+scan-'0';
-			else if(scan==' '){
+		while(c=getc(stdin)){
+			if(c>='0' && c<='9')
+				perm[i]=perm[i]*10+c-'0';
+			if(c==' '){
 				++i;
 				perm[i]=0;
-			}*/
-		scanf("%d", &perm[i]);
+			}
+			if(c=='\n'){
+				break;
+			}
 		}
-		for(j=0;j<i;++j)
+		for(j=0;j<i+1;++j)
 			scanf("%s", values[j]);
-		killWhiteSpace();
-		for(j=0;j<i;++j)
-			printf("%d\t", perm[j]);
-		printf(" int\n");
-		for(j=0;j<i;++j)
-			printf("%s\t", values[j]);
-		printf("string\n");
+		for(j=0;j<i+1;++j)
+			strncpy(values[j] , pValues[perm[j]-1] , 100);
+		for(j=0;j<i+1;++j)
+			printf("%s\n", pValues[j]);
+		printf("\n");
+		scanf("%c%c", &killWhiteSpace, &killWhiteSpace);
 	}
 	return 0;
-}
-
-void killWhiteSpace(){
-	char c;
-	do{
-		scanf("%c", &c);
-	}while(c!='\n');
 }
