@@ -1,20 +1,14 @@
-3999
-I
-CCXII
-1
-CCXL
-473
-CDXXVIII
-3762
-MMMCMLVII
-87
-MMMCMXI
-991
-MDCCXC
-1523
-MDLIV
-44
-MCCLXXXV
-2876
-MVII
-28
+2
+World Cup 1998 - Group A
+4
+Brazil
+Norway
+Morocco
+Scotland
+Some strange tournament
+5
+Team A
+Team B
+Team C
+Team D
+Team E
