@@ -14,15 +14,18 @@ struct countryStats{
 
 struct countryStats* gameScan(struct countryStats *cs);
 char* lineScan(char*);
+void swap(int *a, int *b);
+int* gameSort(struct countryStats *cs, int N, int *rank);
 
 int main (){
-	int N, T, G, i, j;
+	int N, T, G, i, j, k;
 	char line[101];
 	scanf("%d", &N);
 	char tournament[N][101];
 	for(i=0;i<N;++i){
 		strcpy(tournament[i], lineScan(line));
 		scanf("%d", &T);
+		int ranks[T];
 		struct countryStats countries[T];
 		for(j=0;j<T;++j){
 			strcpy(countries[j].name, lineScan(line));
@@ -36,9 +39,20 @@ int main (){
 		while(G--)
 			gameScan(countries);
 		for(j=0;j<T;++j)
-			printf("%s %d %d %d %d %d\n", countries[j].name, countries[j].goalScor, countries[j].goalAng, countries[j].ties, countries[j].wins, countries[j].losses);
+			ranks[j]=j;
+		gameSort(countries, T, ranks);
+		for(j=0;j<T;++j)
+			printf("%d\n", ranks[j]);
+		for(j=0;j<T;++j){
+			printf("RANK) %s %dp, %dg (%d-%d-%d), %dgd (%d-%d)\n",
+				countries[j].name,
+				countries[j].wins*3+countries[j].ties,
+				countries[j].wins+countries[j].ties+countries[j].losses,
+				countries[j].wins, countries[j].ties, countries[j].losses,
+				countries[j].goalScor-countries[j].goalAng,
+				countries[j].goalScor, countries[j].goalAng);
+		}
 	}
-
 	return 0;
 }
 
@@ -62,8 +76,6 @@ char* lineScan(char *line){
 struct countryStats* gameScan(struct countryStats *cs){
 	int i, sc1=0, sc2=0, posC1, posC2, firstCase=1, num=0;
 	char c, country1[33], country2[33];
-	for(i=0;i<4;++i)
-		printf("%s %d %d %d %d %d\n", cs[i].name, cs[i].goalScor, cs[i].goalAng, cs[i].ties, cs[i].wins, cs[i].losses);
 	for(i=0;c=getc(stdin);++i){
 		if(i==0 && c=='\n'){
 			--i;
@@ -88,30 +100,27 @@ struct countryStats* gameScan(struct countryStats *cs){
 			country2[i]='\0';
 			break;
 		}
-		if(c>='0' || c<='9'){
+		if(c>='0' && c<='9'){
 			num=num*10+c-'0';
+			continue;
 		}
-		else{
-			if(firstCase){
-				country1[i]=c;
+		if(firstCase){
+			country1[i]=c;
 			}
-			else
-				country2[i]=c;
-		}
+		else
+			country2[i]=c;
 	}
 	for(i=0;strcmp(country1,cs[i].name);++i);
 	posC1=i;
-	printf("%d ", posC1);
 	for(i=0;strcmp(country2,cs[i].name);++i);
 	posC2=i;
-	printf("%d\n", posC2);
 	cs[posC1].goalScor+=sc1;
 	cs[posC1].goalAng+=sc2;
 	cs[posC2].goalScor+=sc2;
 	cs[posC2].goalAng+=sc1;
 	if(sc1==sc2){
 		cs[posC1].ties+=1;
-		cs[posC2].ties*=1;
+		cs[posC2].ties+=1;
 	}
 	else if(sc1>sc2){
 		cs[posC1].wins+=1;
@@ -122,4 +131,45 @@ struct countryStats* gameScan(struct countryStats *cs){
 		cs[posC1].losses+=1;
 	}
 	return cs;
+}
+
+int* gameSort(struct countryStats *cs, int N, int *rank){
+	int i, j;
+	for(i=0;i<N;++i){
+		for(j=i+1;j<N;++j){
+			if(cs[rank[i]].wins*3+cs[rank[i]].ties<cs[rank[j]].losses*3+cs[rank[j]].ties)
+				swap(&rank[i], &rank[j]);
+			else if(cs[rank[i]].wins*3+cs[rank[i]].ties==cs[rank[j]].losses*3+cs[rank[j]].ties){
+				if(cs[rank[i]].wins<cs[rank[j]].wins)
+					swap(&rank[i], &rank[j]);
+				else if(cs[rank[i]].wins==cs[rank[j]].wins){
+					if(cs[rank[i]].goalScor-cs[rank[i]].goalAng<cs[rank[j]].goalScor-cs[rank[j]].goalAng)
+						swap(&rank[i], &rank[j]);
+					else if(cs[rank[i]].goalScor-cs[rank[i]].goalAng==cs[rank[j]].goalScor-cs[rank[j]].goalAng){
+						if(cs[rank[i]].goalScor<cs[rank[j]].goalScor)
+							swap(&rank[i], &rank[j]);
+						else if(cs[rank[i]].goalScor<cs[rank[j]].goalScor){
+							if(cs[rank[i]].wins+cs[rank[i]].losses+cs[rank[i]].ties>cs[rank[j]].wins+cs[rank[j]].losses+cs[rank[j]].ties)
+								swap(&rank[i], &rank[j]);
+							else if(cs[rank[i]].wins+cs[rank[i]].losses+cs[rank[i]].ties==cs[rank[j]].wins+cs[rank[j]].losses+cs[rank[j]].ties){
+								int t=strcmp(cs[rank[i]].name, cs[rank[j]].name);
+								if(t<0){
+									swap(&rank[i], &rank[j]);
+									printf("HOLA\n");
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return rank;
+}
+
+void swap(int *a, int *b){
+	int temp;
+	temp=*a;
+	*a=*b;
+	*b=temp;
 }
