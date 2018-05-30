@@ -1,13 +1,9 @@
-UBQTS TXT
-tthumb
-LIVESPACE BLOGJAM
-philton
-aeinstein
-YOUBOOK
-j97lee
-sswxyzy
-j97lee
-aeinstein
-SKINUX
+-2147483648
+2147483647
+123456789
+-123456789
 1
+16777216
+20034556
 0
+-1
