@@ -18,5 +18,6 @@ int main(){
 	// Avanzamos por nuestro arreglo del final al principio imprimiendo sus raices.
 	
 	for(--i;i>=0;--i) printf("%.4lf\n", sqrt(nums[i]));
+	free(nums);
 	return 0;
 }
