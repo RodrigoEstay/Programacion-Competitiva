@@ -2,6 +2,12 @@
 
 using namespace std;
 
+// Codigo hecho sin ayuda.
+
+//  Se analizan las apuestas desde el principio hasta el final, sumando todos los datos
+// a gain, si gain llega a ser menor a 0, se iguala gain a 0. Todo el tiempo verificando si
+// se encontro un maximo de ganancias. Se retorna el maximo de ganancias.
+
 int winningStreak(vector<int> bets){
 	int maxGain, gain;
 	maxGain = 0;
@@ -13,6 +19,8 @@ int winningStreak(vector<int> bets){
 	}
 	return maxGain;
 }
+
+//  Solo se leen los datos y se imprime lo pedido.
 
 int main(){
 	int N, aux, maxGain;
