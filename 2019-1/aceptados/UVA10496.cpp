@@ -5,7 +5,6 @@
 #define maxN 12
 
 //  Codigo obtenido de internet:
-// https://github.com/morris821028/UVa/blob/master/volume104/10496%20-%20Collecting%20Beepers.cpp
 
 // Se trata de un problema de Traveling Sales Person.
 
